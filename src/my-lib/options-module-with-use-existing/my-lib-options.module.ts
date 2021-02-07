@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { MODULE_OPTIONS } from "./my-lib-options.interface";
+import { MODULE_OPTIONS } from "../my-lib-options.interface";
 
 @Module({
   providers: [
