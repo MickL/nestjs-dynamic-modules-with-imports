@@ -1,4 +1,4 @@
-# NestJS Sandbox: Dynamic modules with that import other dynamic modules
+# NestJS Sandbox: Configurable dynamic modules that import other configurable dynamic modules
 
 This is a sandbox for figuring out how to pass (async) config to a dynamic module and configuring another dynamic module with it.
 
