@@ -11,6 +11,8 @@ export class MyLibModule {
         MyLibOptionsModule.register(options),
         HttpModule.registerAsync({
           useFactory:     ((options: MyLibModuleOptions) => {
+            console.log(`If you can see this, it works: `, options);
+
             return {
               url:     options.externalApiUrl,
               timeout: options.timeout
