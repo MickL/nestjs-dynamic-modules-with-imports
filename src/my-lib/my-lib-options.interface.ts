@@ -1,6 +1,6 @@
-export interface ModuleOptions {
+export interface MyLibModuleOptions {
   externalApiUrl: string;
   timeout: number;
 }
 
-export const MODULE_OPTIONS = "MODULE_OPTIONS";
+export const MY_LIB_MODULE_OPTIONS = "MODULE_OPTIONS";

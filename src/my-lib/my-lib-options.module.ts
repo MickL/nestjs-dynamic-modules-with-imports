@@ -1,19 +1,19 @@
 import { DynamicModule, Module } from "@nestjs/common";
-import { MODULE_OPTIONS, ModuleOptions } from "../my-lib-options.interface";
+import { MY_LIB_MODULE_OPTIONS, MyLibModuleOptions } from "./my-lib-options.interface";
 
 @Module({})
 export class MyLibOptionsModule {
-  static register(options: ModuleOptions): DynamicModule {
+  static register(options: MyLibModuleOptions): DynamicModule {
     return {
       module:    MyLibOptionsModule,
       providers: [
         {
-          provide:  MODULE_OPTIONS,
+          provide:  MY_LIB_MODULE_OPTIONS,
           useValue: options
         },
       ],
       exports:   [
-        MODULE_OPTIONS,
+        MY_LIB_MODULE_OPTIONS,
       ],
     };
   }

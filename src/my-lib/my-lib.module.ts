@@ -1,31 +1,25 @@
 import { DynamicModule, HttpModule, Module } from "@nestjs/common";
-import { MODULE_OPTIONS, ModuleOptions } from "./my-lib-options.interface";
+import { MY_LIB_MODULE_OPTIONS, MyLibModuleOptions } from "./my-lib-options.interface";
+import { MyLibOptionsModule } from "./my-lib-options.module";
 
-// import { MyLibOptionsModule } from "./use-existing/my-lib-options.module";
-import { MyLibOptionsModule } from "./options-module-with-register/my-lib-options.module";
-
-@Module({
-  imports:     [],
-  controllers: [],
-  providers:   []
-})
+@Module({})
 export class MyLibModule {
-  static register(options: ModuleOptions): DynamicModule {
+  static register(options: MyLibModuleOptions): DynamicModule {
     return {
-      module:    MyLibModule,
-      imports:   [
+      module:  MyLibModule,
+      imports: [
         MyLibOptionsModule.register(options),
         HttpModule.registerAsync({
-          useFactory: ((options: ModuleOptions) => {
-            console.log("Works:", options);
-
+          useFactory:     ((options: MyLibModuleOptions) => {
             return {
               url:     options.externalApiUrl,
               timeout: options.timeout
             };
           }),
-          imports:    [MyLibOptionsModule],
-          inject:     [MODULE_OPTIONS]
+          inject: [
+            MY_LIB_MODULE_OPTIONS,
+          ],
+          imports: [MyLibOptionsModule]
         })
       ]
     };
