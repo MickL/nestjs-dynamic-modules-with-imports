@@ -12,6 +12,7 @@ import { MyLibService } from "./my-lib.service";
 })
 export class MyLibModule {
   static register(options: MyLibModuleOptions): DynamicModule {
+    // This is easy:
     return {
       module:  MyLibModule,
       imports: [
@@ -24,10 +25,11 @@ export class MyLibModule {
   }
 
   static registerAsync(options: MyLibModuleAsyncOptions): DynamicModule {
+    // But how to import other modules here and pass in the options?
     return {
       module:    MyLibModule,
       imports:   [
-        ...options.imports
+        ...options.imports,
         // TODO: How?
         // HttpModule.register({
         //   url:     options.externalApiUrl,
